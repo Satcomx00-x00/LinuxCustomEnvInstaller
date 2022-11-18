@@ -1,3 +1,7 @@
+#!/usr/bin/env sh
+set -eu
+printf '\n'
+
 
 
 dep="git curl wget"
@@ -64,6 +68,7 @@ install_starship_config() {
 
 
 # test dependencies and install fonts^
+# call functions
 test_dependencies
 install_fonts
 install_starship
