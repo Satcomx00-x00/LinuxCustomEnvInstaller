@@ -1,4 +1,4 @@
-# ! /bin/bash
+
 
 dep="git curl wget"
 fonts_url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/3270.zip"
