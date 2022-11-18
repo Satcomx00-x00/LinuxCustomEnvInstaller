@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 set -eu
 printf '\n'
 
@@ -69,9 +69,10 @@ install_starship_config() {
 
 # test dependencies and install fonts^
 # call functions
-test_dependencies
-install_fonts
-install_starship
-install_starship_config
+test_dependencies()
+install_fonts()
+install_starship()
+install_starship_config()
+
 
 
