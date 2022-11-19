@@ -1,29 +1,29 @@
-#!/usr/bin/env bash
-set -eu
-printf '\n'
+#!bash -> #!/usr/bin/env bash
+
+function print_info() {
+    printf "%b %s" "$1" "$2"
+    printf '\n'
+;}
 
 
 
 dep="git curl wget"
-fonts_url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/3270.zip"
-starship_config_url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/3270/Regular/complete/starship.toml"
+fonts_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/3270.zip"
+starship_config_url="https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/3270/Regular/complete/starship.toml"
 
 
-blue = "\033[0;34m"
-green = "\033[0;32m"
-red = "\033[0;31m"
-yellow = "\033[0;33m"
-reset = "\033[0m"
+blue="\033[0;34m"
+green="\033[0;32m"
+red="\033[0;31m"
+yellow="\033[0;33m"
+reset="\033[0m"
 
-info = "[${blue}INFO${reset}]"
-warn = "[${yellow}WARN${reset}]"
-error = "[${red}ERROR${reset}]"
-success = "[${green}SUCCESS${reset}]"
+info="[${blue}INFO${reset}]"
+warn="[${yellow}WARN${reset}]"
+error="[${red}ERROR${reset}]"
+success="[${green}SUCCESS${reset}]"
 
-# print with color and style^
-print_info(type, msg) {
-    echo -e "${type} ${msg}"
-}
+
 
 install_fonts() {
     print_info ${info} "Installing fonts..."^
@@ -69,10 +69,10 @@ install_starship_config() {
 
 # test dependencies and install fonts^
 # call functions
-test_dependencies()
-install_fonts()
-install_starship()
-install_starship_config()
+test_dependencies();
+install_fonts();
+install_starship();
+install_starship_config();
 
 
 
