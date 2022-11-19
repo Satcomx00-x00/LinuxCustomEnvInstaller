@@ -27,8 +27,7 @@ success="[${green}SUCCESS${reset}]"
 
 install_fonts() {
     print_info ${info} "Installing fonts..."
-    wget -O 3270.zip $fonts_url && unzip 3270.zip -d ~/.local/share/fonts && rm 3270.zip
-    fc-cache -f -v
+    wget -O 3270.zip $fonts_url && unzip 3270.zip -d ~/.local/share/fonts && rm 3270.zip && fc-cache -f -v > /dev/null 2>&1
     print_info ${success} "Fonts installed!"
 }
 
@@ -38,7 +37,7 @@ test_dependencies() {
     for i in $dep; do
         if ! command -v $i &> /dev/null; then
             print_info ${warn} "$i is not installed, installing..."
-            sudo apt install $i -y
+            sudo apt install $i -y > /dev/null 2>&1
         fi
     done
     print_info ${success} "Dependencies installed!"
@@ -50,7 +49,6 @@ install_starship() {
     # catch exception if download fails
     if ! curl -fsSL https://starship.rs/install.sh | sh; then
         print_info ${error} "Starship.rs installation failed!"
-        exit 1
     fi
     print_info ${success} "Starship.rs installed!"
 }
