@@ -1,15 +1,15 @@
-#!bash -> #!/usr/bin/env bash
+#!/usr/bin/env bash
 
 function print_info() {
     printf "%b %s" "$1" "$2"
     printf '\n'
-;}
+}
 
 
 
 dep="git curl wget"
 fonts_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/3270.zip"
-starship_config_url="https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/3270/Regular/complete/starship.toml"
+starship_config_url="https://raw.githubusercontent.com/Satcomx00-x00/LinuxCustomEnvInstaller/main/starship.toml"
 
 
 blue="\033[0;34m"
@@ -26,7 +26,7 @@ success="[${green}SUCCESS${reset}]"
 
 
 install_fonts() {
-    print_info ${info} "Installing fonts..."^
+    print_info ${info} "Installing fonts..."
     wget -O 3270.zip $fonts_url && unzip 3270.zip -d ~/.local/share/fonts && rm 3270.zip
     fc-cache -f -v
     print_info ${success} "Fonts installed!"
@@ -48,7 +48,7 @@ install_starship() {
     # install starship.rs
     print_info ${info} "Installing starship.rs..."
     # catch exception if download fails
-    if ! curl -fsSL https://starship.rs/install.sh | bash; then
+    if ! curl -fsSL https://starship.rs/install.sh | sh; then
         print_info ${error} "Starship.rs installation failed!"
         exit 1
     fi
@@ -69,10 +69,11 @@ install_starship_config() {
 
 # test dependencies and install fonts^
 # call functions
-test_dependencies();
-install_fonts();
-install_starship();
-install_starship_config();
+test_dependencies
+install_fonts
+install_starship
+install_starship_config
 
 
 
+source ~/.bashrc
