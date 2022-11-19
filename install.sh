@@ -49,6 +49,7 @@ install_starship() {
     # catch exception if download fails
     if ! curl -fsSL https://starship.rs/install.sh | sh; then
         print_info ${error} "Starship.rs installation failed!"
+        # exit 1
     fi
     print_info ${success} "Starship.rs installed!"
 }
@@ -59,7 +60,7 @@ install_starship_config() {
     print_info ${info} "Installing starship.toml..."
     if ! wget -O ~/.config/starship.toml $starship_config_url; then
         print_info ${error} "Starship.toml installation failed!"
-        exit 1
+        # exit 1
     fi
     print_info ${success} "Starship.toml installed!"
 }
@@ -75,3 +76,4 @@ install_starship_config
 
 
 source ~/.bashrc
+print_info ${success} "Done!"
